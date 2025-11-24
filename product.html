@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details | Senthoor Oils</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">Senthoor <span>Oils</span></a>
+            <div class="mobile-menu-btn">☰</div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="shop.html" class="nav-link active">Shop</a></li>
+                <li><a href="about.html" class="nav-link">Our Story</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="cart.html" class="cart-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Product Details Section -->
+    <section class="section-padding" style="margin-top: 60px; min-height: 80vh;">
+        <div class="container">
+            <div id="product-container"
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 4rem; align-items: start;">
+                <!-- Content injected via JS -->
+                <div style="text-align: center;">Loading product...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Senthoor Oils</h3>
+                    <p style="opacity: 0.8; margin-bottom: 1rem;">Empowering farmers, nourishing families.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li>Email: Senthooroils07@gmail.com</li>
+                        <li>Phone: +91 75983 20662</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2024 Senthoor Oils. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const productId = params.get('id');
+            const container = document.getElementById('product-container');
+
+            if (!productId || typeof products === 'undefined') {
+                container.innerHTML = '<h2>Product not found</h2><a href="shop.html" class="btn btn-primary">Back to Shop</a>';
+                return;
+            }
+
+            const product = products.find(p => p.id === productId);
+
+            if (!product) {
+                container.innerHTML = '<h2>Product not found</h2><a href="shop.html" class="btn btn-primary">Back to Shop</a>';
+                return;
+            }
+
+            // Render Product
+            container.innerHTML = `
+                <div class="product-image">
+                    <img src="${product.image}" alt="${product.name}" style="width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
+                </div>
+                <div class="product-info">
+                    <h1 style="margin-bottom: 0.5rem;">${product.name}</h1>
+                    <p style="color: var(--color-text-light); font-size: 1.1rem; margin-bottom: 2rem;">${product.shortDesc}</p>
+                    
+                    <div style="margin-bottom: 2rem;">
+                        <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Select Size:</label>
+                        <div class="size-selector" style="display: flex; gap: 1rem;">
+                            ${Object.keys(product.prices).map(size => `
+                                <button class="size-btn ${size === '1L' ? 'active' : ''}" 
+                                        onclick="selectSize('${size}', ${product.prices[size]})"
+                                        style="padding: 10px 20px; border: 2px solid var(--color-primary); background: transparent; border-radius: var(--radius-sm); cursor: pointer; font-weight: 600; transition: var(--transition-fast);">
+                                    ${size}
+                                </button>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 2rem;">
+                        <span id="price-display" style="font-size: 2rem; font-weight: 700; color: var(--color-primary);">₹${product.prices['1L']}</span>
+                    </div>
+
+                    <div style="display: flex; gap: 1rem; margin-bottom: 3rem;">
+                        <div class="quantity-selector" style="display: flex; align-items: center; border: 1px solid #ccc; border-radius: var(--radius-full); padding: 5px 15px;">
+                            <button onclick="adjustQty(-1)" style="border: none; background: none; cursor: pointer; font-size: 1.2rem;">-</button>
+                            <input type="number" id="qty-input" value="1" min="1" style="width: 40px; text-align: center; border: none; font-size: 1rem; font-weight: 600;" readonly>
+                            <button onclick="adjustQty(1)" style="border: none; background: none; cursor: pointer; font-size: 1.2rem;">+</button>
+                        </div>
+                        <button onclick="addToCartCurrent()" class="btn btn-primary" style="flex: 1;">Add to Cart</button>
+                    </div>
+
+                    <div class="product-details">
+                        <h3 style="margin-bottom: 1rem;">Description</h3>
+                        <p style="margin-bottom: 2rem; line-height: 1.8;">${product.description}</p>
+                        
+                        <h3 style="margin-bottom: 1rem;">Key Benefits</h3>
+                        <ul style="list-style: disc; padding-left: 1.5rem;">
+                            ${product.benefits.map(benefit => `<li style="margin-bottom: 0.5rem;">${benefit}</li>`).join('')}
+                        </ul>
+                    </div>
+                </div>
+            `;
+
+            // Initialize selection
+            window.currentSize = '1L';
+            window.currentPrice = product.prices['1L'];
+            updateSizeBtnStyles();
+        });
+
+        // Helper functions for this page
+        function selectSize(size, price) {
+            window.currentSize = size;
+            window.currentPrice = price;
+            document.getElementById('price-display').textContent = '₹' + price;
+            updateSizeBtnStyles();
+        }
+
+        function updateSizeBtnStyles() {
+            document.querySelectorAll('.size-btn').forEach(btn => {
+                if (btn.textContent.trim() === window.currentSize) {
+                    btn.style.backgroundColor = 'var(--color-primary)';
+                    btn.style.color = 'white';
+                } else {
+                    btn.style.backgroundColor = 'transparent';
+                    btn.style.color = 'var(--color-text-main)';
+                }
+            });
+        }
+
+        function adjustQty(delta) {
+            const input = document.getElementById('qty-input');
+            let val = parseInt(input.value) + delta;
+            if (val < 1) val = 1;
+            input.value = val;
+        }
+
+        function addToCartCurrent() {
+            const params = new URLSearchParams(window.location.search);
+            const productId = params.get('id');
+            const qty = parseInt(document.getElementById('qty-input').value);
+
+            addToCart(productId, window.currentSize, qty);
+        }
+    </script>
+</body>
+
+</html>

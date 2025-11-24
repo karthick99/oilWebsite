@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | Senthoor Oils</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">Senthoor <span>Oils</span></a>
+            <div class="mobile-menu-btn">☰</div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="shop.html" class="nav-link">Shop</a></li>
+                <li><a href="about.html" class="nav-link">Our Story</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="cart.html" class="cart-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Checkout Section -->
+    <section class="section-padding" style="background-color: var(--color-bg); min-height: 80vh;">
+        <div class="container" style="max-width: 1200px;">
+            <h1 style="text-align: center; margin-bottom: 2rem;">Checkout</h1>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                <!-- Left Column - Customer Information -->
+                <div>
+                    <div
+                        style="background: white; padding: 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
+                        <h2 style="margin-bottom: 1.5rem; color: var(--color-primary);">Customer Information</h2>
+
+                        <form id="checkout-form">
+                            <div style="margin-bottom: 1.5rem;">
+                                <label
+                                    style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--color-text-main);">Full
+                                    Name *</label>
+                                <input type="text" id="customer-name" required
+                                    style="width: 100%; padding: 0.75rem; border: 2px solid #e0e0e0; border-radius: var(--radius-sm); font-size: 1rem; transition: border-color 0.3s;">
+                            </div>
+
+                            <div style="margin-bottom: 1.5rem;">
+                                <label
+                                    style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--color-text-main);">Phone
+                                    Number *</label>
+                                <input type="tel" id="customer-phone" required pattern="[0-9]{10}"
+                                    style="width: 100%; padding: 0.75rem; border: 2px solid #e0e0e0; border-radius: var(--radius-sm); font-size: 1rem; transition: border-color 0.3s;"
+                                    placeholder="10-digit mobile number">
+                            </div>
+
+                            <div style="margin-bottom: 1.5rem;">
+                                <label
+                                    style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--color-text-main);">Email</label>
+                                <input type="email" id="customer-email"
+                                    style="width: 100%; padding: 0.75rem; border: 2px solid #e0e0e0; border-radius: var(--radius-sm); font-size: 1rem; transition: border-color 0.3s;">
+                            </div>
+
+                            <div style="margin-bottom: 1.5rem;">
+                                <label
+                                    style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--color-text-main);">Delivery
+                                    Address *</label>
+                                <textarea id="customer-address" required rows="3"
+                                    style="width: 100%; padding: 0.75rem; border: 2px solid #e0e0e0; border-radius: var(--radius-sm); font-size: 1rem; transition: border-color 0.3s; resize: vertical;"></textarea>
+                            </div>
+
+                            <div style="margin-bottom: 1.5rem;">
+                                <label
+                                    style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--color-text-main);">City
+                                    *</label>
+                                <input type="text" id="customer-city" required
+                                    style="width: 100%; padding: 0.75rem; border: 2px solid #e0e0e0; border-radius: var(--radius-sm); font-size: 1rem; transition: border-color 0.3s;">
+                            </div>
+
+                            <div
+                                style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+                                <div>
+                                    <label
+                                        style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--color-text-main);">State
+                                        *</label>
+                                    <input type="text" id="customer-state" required
+                                        style="width: 100%; padding: 0.75rem; border: 2px solid #e0e0e0; border-radius: var(--radius-sm); font-size: 1rem; transition: border-color 0.3s;">
+                                </div>
+                                <div>
+                                    <label
+                                        style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--color-text-main);">PIN
+                                        Code *</label>
+                                    <input type="text" id="customer-pincode" required pattern="[0-9]{6}"
+                                        style="width: 100%; padding: 0.75rem; border: 2px solid #e0e0e0; border-radius: var(--radius-sm); font-size: 1rem; transition: border-color 0.3s;"
+                                        placeholder="6-digit PIN">
+                                </div>
+                            </div>
+
+                            <div style="margin-bottom: 1.5rem;">
+                                <label
+                                    style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--color-text-main);">Order
+                                    Notes (Optional)</label>
+                                <textarea id="order-notes" rows="2"
+                                    style="width: 100%; padding: 0.75rem; border: 2px solid #e0e0e0; border-radius: var(--radius-sm); font-size: 1rem; transition: border-color 0.3s; resize: vertical;"
+                                    placeholder="Any special instructions for delivery"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Right Column - Order Summary -->
+                <div>
+                    <div
+                        style="background: white; padding: 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); position: sticky; top: 100px;">
+                        <h2 style="margin-bottom: 1.5rem; color: var(--color-primary);">Order Summary</h2>
+
+                        <div id="checkout-items" style="margin-bottom: 1.5rem;">
+                            <!-- Cart items will be displayed here -->
+                        </div>
+
+                        <div style="border-top: 2px solid var(--color-bg); padding-top: 1rem; margin-bottom: 1rem;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem;">
+                                <span style="color: var(--color-text-light);">Subtotal:</span>
+                                <span id="checkout-subtotal" style="font-weight: 600;">₹0</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem;">
+                                <span style="color: var(--color-text-light);">Delivery:</span>
+                                <span id="checkout-delivery"
+                                    style="font-weight: 600; color: var(--color-secondary);">FREE</span>
+                            </div>
+                            <div
+                                style="display: flex; justify-content: space-between; padding-top: 1rem; border-top: 2px solid var(--color-bg);">
+                                <span style="font-size: 1.2rem; font-weight: 700;">Total:</span>
+                                <span id="checkout-total"
+                                    style="font-size: 1.2rem; font-weight: 700; color: var(--color-primary);">₹0</span>
+                            </div>
+                        </div>
+
+                        <div
+                            style="background: linear-gradient(135deg, #e9f5f0 0%, #f0f9f4 100%); padding: 1rem; border-radius: var(--radius-sm); margin-bottom: 1.5rem;">
+                            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                </svg>
+                                <span style="font-weight: 600; color: var(--color-primary);">Free Delivery</span>
+                            </div>
+                            <p style="font-size: 0.9rem; color: var(--color-text-light); margin: 0;">On all orders above
+                                ₹999</p>
+                        </div>
+
+                        <button type="submit" form="checkout-form" class="btn btn-primary"
+                            style="width: 100%; padding: 1rem; font-size: 1.1rem; font-weight: 700;">
+                            Proceed to Payment
+                        </button>
+
+                        <p
+                            style="text-align: center; font-size: 0.85rem; color: var(--color-text-light); margin-top: 1rem;">
+                            🔒 Secure UPI Payment
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Senthoor Oils</h3>
+                    <p style="opacity: 0.8; margin-bottom: 1rem;">Empowering farmers, nourishing families.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li>Email: Senthooroils07@gmail.com</li>
+                        <li>Phone: +91 75983 20662</li>
+                        <li>Address: No. 13, Besant Nagar, Kumbakonam 612006</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2024 Senthoor Oils. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Load cart items and display in checkout
+        document.addEventListener('DOMContentLoaded', () => {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const checkoutItems = document.getElementById('checkout-items');
+            const subtotalEl = document.getElementById('checkout-subtotal');
+            const deliveryEl = document.getElementById('checkout-delivery');
+            const totalEl = document.getElementById('checkout-total');
+
+            if (cart.length === 0) {
+                checkoutItems.innerHTML = '<p style="text-align: center; color: var(--color-text-light);">Your cart is empty</p>';
+                return;
+            }
+
+            let subtotal = 0;
+
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                subtotal += itemTotal;
+
+                const itemDiv = document.createElement('div');
+                itemDiv.style.cssText = 'display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; border-bottom: 1px solid var(--color-bg);';
+                itemDiv.innerHTML = `
+                    <div>
+                        <div style="font-weight: 600; margin-bottom: 0.25rem;">${item.name}</div>
+                        <div style="font-size: 0.9rem; color: var(--color-text-light);">${item.size} × ${item.quantity}</div>
+                    </div>
+                    <div style="font-weight: 600;">₹${itemTotal}</div>
+                `;
+                checkoutItems.appendChild(itemDiv);
+            });
+
+            const deliveryFee = subtotal >= 999 ? 0 : 50;
+            const total = subtotal + deliveryFee;
+
+            subtotalEl.textContent = `₹${subtotal}`;
+            deliveryEl.textContent = deliveryFee === 0 ? 'FREE' : `₹${deliveryFee}`;
+            deliveryEl.style.color = deliveryFee === 0 ? 'var(--color-secondary)' : 'var(--color-text-main)';
+            totalEl.textContent = `₹${total}`;
+
+            // Handle form submission
+            document.getElementById('checkout-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                const orderData = {
+                    orderId: 'SO' + Date.now(),
+                    customer: {
+                        name: document.getElementById('customer-name').value,
+                        phone: document.getElementById('customer-phone').value,
+                        email: document.getElementById('customer-email').value,
+                        address: document.getElementById('customer-address').value,
+                        city: document.getElementById('customer-city').value,
+                        state: document.getElementById('customer-state').value,
+                        pincode: document.getElementById('customer-pincode').value
+                    },
+                    items: cart,
+                    subtotal: subtotal,
+                    deliveryFee: deliveryFee,
+                    total: total,
+                    notes: document.getElementById('order-notes').value,
+                    timestamp: new Date().toISOString()
+                };
+
+                // Save order data to localStorage
+                localStorage.setItem('currentOrder', JSON.stringify(orderData));
+
+                // Redirect to payment page
+                window.location.href = 'payment.html';
+            });
+        });
+    </script>
+
+    <style>
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--color-primary) !important;
+        }
+
+        @media (max-width: 768px) {
+            .container>div {
+                grid-template-columns: 1fr !important;
+            }
+        }
+    </style>
+</body>
+
+</html>
