@@ -302,7 +302,7 @@
                 subtotal += item.price * item.quantity;
             });
 
-            const deliveryFee = subtotal >= 999 ? 0 : 50;
+            const deliveryFee = subtotal >= 999 ? 0 : 100;
             const total = subtotal + deliveryFee;
 
             // Generate order ID

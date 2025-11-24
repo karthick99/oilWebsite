@@ -13,9 +13,9 @@ const products = [
             'No Added Preservatives'
         ],
         prices: {
-            '1L': 350,
-            '5L': 1650,
-            '10L': 3200
+            '1L': 280,
+            '5L': 1300,
+            '10L': 2500
         }
     },
     {
@@ -32,9 +32,9 @@ const products = [
             'Traditional Cold-Press Method'
         ],
         prices: {
-            '1L': 420,
-            '5L': 2000,
-            '10L': 3900
+            '1L': 390,
+            '5L': 1850,
+            '10L': 3500
         }
     },
     {
